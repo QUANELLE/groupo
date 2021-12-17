@@ -1,17 +1,20 @@
 "use strict";
 const express = require("express");
 // const helmet = require("helmet");
-const path = require("path");
+// const path = require("path");
+const sequelize = require("./config/database");
+const User = require("./models/userModel");
+const UserRoute = require("./routes/UserRoute");
 const app = express();
 
-
-const { sequelize} = require('./models')
-
-async function main(){
-    await sequelize.sync({ force: true })
-}
-main()
-
+sequelize
+    // .sync({force:true})
+    .sync()
+    .then((res) => {
+        // return User.create({email:"toto@email.com", username:"toto", password:"testmdp"});
+        console.log("app sync");
+    })
+    .catch((error) => {console.log(error);})
 
 
 app.use((req, res, next) => {
@@ -32,6 +35,6 @@ app.use(express.json());
 
 // app.use("/images", express.static(path.join(__dirname, "images")));
 
-// app.use("/api/auth", userRoute);
+app.use("/api/auth", UserRoute);
 
 module.exports = app;
