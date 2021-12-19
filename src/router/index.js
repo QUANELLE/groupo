@@ -4,8 +4,7 @@ import FrtRoutes from '../FrontRoutes'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter({
-  // frtroutes: FrtRoutes
+const router = new VueRouter({ 
 routes: FrtRoutes,
 mode: 'history'
 })
