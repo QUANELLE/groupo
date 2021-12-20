@@ -2,9 +2,9 @@ POST http://localhost:3000/api/auth/signup HTTP/1.1
  Content-Type: application/json
 
 {
-    "email":"dupond@gmail.com",
-    "username": "dupond",
-    "password": "dupond"
+    "email":"durand@gmail.com",
+    "username": "durand",
+    "password": "durand"
 }
 ###
 GET  http://localhost:3000/api/auth HTTP/1.1
@@ -14,7 +14,7 @@ POST http://localhost:3000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email":"toto@gmail.com",
-    "username": "toto",
-    "password": "testTEST12"
+    "email":"durand@gmail.com",
+    "username": "durand",
+    "password": "durand"
 }
