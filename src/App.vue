@@ -2,25 +2,22 @@
   <div id="app">
     <div id="nav"> 
       <router-link to="/">Home</router-link> |
-      <router-link to="/page1">Page1</router-link>
+      <router-link to="/Message">Posts</router-link>
      </div>
     <router-view/>
-    <!-- <home></home>
-    <page1></page1> -->
+    
   </div>
 </template>
 
 <script>
-// import Home from './components/Home.vue'
-// import Page1 from './components/Page1.vue'
+
 
 
 
 export default {
   name: 'App',
   components: {
-    // 'home': Home,
-    // 'page1': Page1
+    
   }
 }
 </script>

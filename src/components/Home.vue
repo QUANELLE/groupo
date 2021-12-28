@@ -5,23 +5,19 @@
         
             <div class="form-group">
 
-            <!-- <div> -->
+           
                 <label for="email">email</label>
                 
                 <input class="form-control"  v-model="formData.email" type="text" id="email">
-            <!-- </div> -->
-            <!-- <div> -->
+           
                 <label for="username">nom</label>
                
                 <input class="form-control"  v-model="formData.username" type="text" id="username">
-            <!-- </div> -->
-            
-            <!-- <div> -->
+           
                 <label for="password">mot de passe</label>
                
                 <input class="form-control "  v-model="formData.password" type="text" id="password">
-            <!-- </div> -->
-            
+           
             <button type="submit" class="btnsubmit">Enregistrez-vous!</button>         
             </div>
 
@@ -61,11 +57,11 @@ export default {
 		fetch("http://localhost:3000/api/auth/signup", fetchData)
 			.then((res) =>{
                 console.log("reponse apres fetch=",res);
-                return res.json()
+                return res.json();
                 })
                 
 			.then(data => {
-                console.log(JSON.stringify(data));			
+                console.log(JSON.stringify(data));
 			});
         
         alert(`Votre profil est créé!`);

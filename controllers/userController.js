@@ -12,12 +12,13 @@ exports.signup = (req, res, next) => {
   console.log(req.body);
   sequelize.sync()
     .then((res) => {
-
         bcrypt
        .hash(req.body.password, 10)
-       .then((hash) => User.create(
+       .then((hash) =>{ 
+         return User.create(
          { email: req.body.email, username: req.body.username, password: hash }
-         ))    
+         ) } )
+         .then((user)=> {console.log("user créé:", user);}) 
        .catch((error) => res.status(400).json({"erreur create" : error }))
     })
     .catch((error) => res.status(400).json({"erreur sync create user" : error }))

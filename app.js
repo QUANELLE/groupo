@@ -4,8 +4,12 @@ const express = require("express");
 // const path = require("path");
 const sequelize = require("./config/database");
 const User = require("./models/userModel");
+const Message = require("./models/PostModel")
 const UserRoute = require("./routes/UserRoute");
+const MessageRoute = require("./routes/messageRoute");
 const app = express();
+
+User.hasMany(Message)
 
 sequelize
     // .sync({force:true})
@@ -36,5 +40,6 @@ app.use(express.json());
 // app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/api/auth", UserRoute);
+app.use("/api/messages", MessageRoute);
 
 module.exports = app;
