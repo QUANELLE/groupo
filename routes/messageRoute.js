@@ -6,15 +6,15 @@ const auth = require("../middlewares/auth");
 
 
 Router.post("/", messageController.createMessage);
-// Router.post("/:id/like", auth, messageController.createLikemessage);
+// Router.post("/:id/like", auth, messageController.createLikeMessage);
 
 
-// Router.delete("/:id", auth, messageController.deleteMessage);
+Router.delete("/:id", auth, messageController.deleteMessage);
 // Router.put("/:id", auth, multer, messageController.modifyMessage);
 // Router.get("/:id", auth, messageController.getOneMessage);
 
-// Router.get("/user/messages", messageController.findUserMessages);
-Router.get("/",auth, messageController.findAllMessages);
+Router.get("/userMessages", messageController.findUserMessages);
+Router.get("/", auth, messageController.findAllMessages);
 
 module.exports = Router;
 

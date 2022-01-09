@@ -1,7 +1,12 @@
 <template>
  <form @submit.prevent="createMessage()" method="post">
+ <!-- <form  method="post" action="/Message"> -->
         
             <div class="form-group">
+                <label for="userId">userId</label>
+                <input type="text" class="form-control" v-model="formData.userId" id="userId">
+                <!-- <label for="token">token</label>
+                <input type="text" class="form-control" v-model="formData.token" id="token"> -->
 
            
                 <label for="message">message</label>
@@ -19,21 +24,24 @@ export default {
     data() {
        return{
            formData:{
-               message:''
+               message:'',
+               userId:''
                        
-           } 
+           }, 
+            //    token:'',
        }
     },
     methods: {
         createMessage () {
-            
+            // let token = this.token;
             let fetchData = {
                 
                 method: 'POST',
 			
 			body: JSON.stringify(this.formData),
 			headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                // "Authorization": `Bearer ${token}`  
 			}
 		};
                 console.log("formData=",this.formData);

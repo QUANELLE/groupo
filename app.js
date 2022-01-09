@@ -9,13 +9,13 @@ const UserRoute = require("./routes/UserRoute");
 const MessageRoute = require("./routes/messageRoute");
 const app = express();
 
-User.hasMany(Message)
+
 
 sequelize
     // .sync({force:true})
     .sync()
     .then((res) => {
-        // return User.create({email:"toto@email.com", username:"toto", password:"testmdp"});
+        
         console.log("app sync");
     })
     .catch((error) => {console.log(error);})

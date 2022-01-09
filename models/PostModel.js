@@ -8,11 +8,7 @@ const sequelize =require("../config/database");
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-      },
-      // userId: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false
-      // },
+      },      
       message: {
           type: Sequelize.STRING,
           allowNull: false            

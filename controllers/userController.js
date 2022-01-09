@@ -11,14 +11,14 @@ exports.signup = (req, res, next) => {
   console.log("==>requete");
   console.log(req.body);
   sequelize.sync()
-    .then((res) => {
+    .then(() => {
         bcrypt
        .hash(req.body.password, 10)
        .then((hash) =>{ 
          return User.create(
          { email: req.body.email, username: req.body.username, password: hash }
          ) } )
-         .then((user)=> {console.log("user créé:", user);}) 
+         .then(()=> res.status(201).json({ message: "Utilisateur créé !" }))
        .catch((error) => res.status(400).json({"erreur create" : error }))
     })
     .catch((error) => res.status(400).json({"erreur sync create user" : error }))
@@ -26,21 +26,24 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
+  // console.log(req.body.email);
   User.findOne({ where: { email: req.body.email }})
     .then((user) => {
+      console.log(user);
       if (!user) {
         return res.status(401).json({ error: "Utilisateur non trouvé !" });
       }
       bcrypt
         .compare(req.body.password, user.password)
         .then((valid) => {
+          // console.log(req.body.password, user.password);
           if (!valid) {
             return res.status(401).json({ error: "Mot de passe incorrect !" });
           }
           res.status(200).json({
-            userId: user._id,
+            userId: user.dataValues.id,
             token: jwt.sign(
-              { userId: user._id },
+              { userId: user.dataValues.id },
               `${process.env.TOKEN_SECRET}`,
               { expiresIn: "24h" }
             ),
